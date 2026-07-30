@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arunathish R V — Cybersecurity Analyst</title>
+<meta name="description" content="Cybersecurity Analyst — blue team defense with red team knowledge. SOC-style investigations, threat hunting, malware analysis, and detection work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   ARUNATHISH R V — CYBERSECURITY PORTFOLIO
+   Dark glassmorphism + neumorphism · blue (defense) / red (offense knowledge)
+================================================================= */
+:root{
+  --bg:#0a0e15;
+  --bg-deep:#060910;
+  --panel:#121926;
+  --panel-2:#161f2d;
+  --shadow-dark: rgba(0,0,0,0.6);
+  --shadow-light: rgba(255,255,255,0.035);
+  --glass: rgba(255,255,255,0.032);
+  --glass-border: rgba(214,227,245,0.1);
+  --line: rgba(214,227,245,0.08);
+
+  --blue:#3f92ff;
+  --blue-soft: rgba(63,146,255,0.14);
+  --blue-line: rgba(63,146,255,0.38);
+
+  --red:#ff5252;
+  --red-soft: rgba(255,82,82,0.13);
+  --red-line: rgba(255,82,82,0.36);
+
+  --text:#e8edf6;
+  --text-muted:#8b96aa;
+  --text-faint:#576174;
+
+  --r-lg:26px; --r-md:18px; --r-sm:10px;
+
+  --font-display:'Space Grotesk', sans-serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 640px at 88% -8%, rgba(63,146,255,0.07), transparent 60%),
+    radial-gradient(1000px 700px at -8% 108%, rgba(255,82,82,0.05), transparent 60%),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  opacity:0;
+}
+a{ color:inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+h1,h2,h3,h4{ font-family:var(--font-display); margin:0; font-weight:600; }
+p{ margin:0; }
+::selection{ background:var(--blue-soft); color:var(--blue); }
+:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:4px; }
+
+.wrap{ max-width:1180px; margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+.section{ padding:120px 0; position:relative; z-index:1; }
+
+.eyebrow{
+  font-family:var(--font-mono); font-size:12.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--text-faint);
+  display:flex; align-items:center; gap:10px; margin-bottom:18px;
+}
+.eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--blue); box-shadow:0 0 8px var(--blue); }
+.eyebrow.red .dot{ background:var(--red); box-shadow:0 0 8px var(--red); }
+
+/* glass + neumorphic surfaces */
+.glass{ background:var(--glass); border:1px solid var(--glass-border); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+.neu{ background:var(--panel); border-radius:var(--r-md); box-shadow:9px 9px 20px var(--shadow-dark), -7px -7px 18px var(--shadow-light); }
+
+.panel-card{
+  border-radius:var(--r-md);
+  background:linear-gradient(155deg, var(--glass), rgba(255,255,255,0.012));
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  box-shadow:9px 9px 22px rgba(0,0,0,0.45), -6px -6px 16px rgba(255,255,255,0.02);
+  padding:32px;
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.panel-card:hover{ transform:translateY(-4px); border-color:var(--blue-line); box-shadow:12px 14px 30px rgba(0,0,0,0.5), -6px -6px 18px rgba(255,255,255,0.025); }
+
+/* nav */
+.site-nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(10,14,21,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  opacity:0;
+}
+.site-nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; }
+.brand{ font-family:var(--font-mono); font-size:14px; letter-spacing:.05em; display:flex; align-items:center; gap:10px; }
+.brand .bracket{ color:var(--blue); }
+.brand .bracket.r{ color:var(--red); }
+.nav-links{ display:flex; gap:6px; align-items:center; }
+.nav-links a{
+  font-family:var(--font-mono); font-size:12.5px; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--text-muted); padding:9px 14px; border-radius:10px;
+  transition:color .25s ease, background .25s ease;
+}
+.nav-links a:hover, .nav-links a.in-view{ color:var(--blue); background:rgba(255,255,255,0.03); }
+.nav-toggle{ display:none; background:none; border:0; color:var(--text); font-size:22px; cursor:pointer; }
+.nav-cta{
+  font-family:var(--font-mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--bg); background:var(--blue); padding:9px 16px; border-radius:10px;
+}
+@media (max-width:860px){
+  .nav-links{ position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch;
+    background:rgba(10,14,21,0.97); border-bottom:1px solid var(--line); padding:10px 20px 20px; display:none; }
+  .nav-links.open{ display:flex; }
+  .nav-links a{ padding:12px 8px; }
+  .nav-toggle{ display:block; }
+  .nav-cta{ display:none; }
+}
+
+/* ---------- HERO SPLIT ---------- */
+.hero{ position:relative; min-height:100vh; display:grid; grid-template-columns:1fr 1fr; padding-top:74px; }
+.hero-half{ position:relative; padding:60px 56px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
+.hero-half.blue-side{ background:linear-gradient(200deg, rgba(63,146,255,0.09), transparent 55%), var(--bg); align-items:flex-end; text-align:right; }
+.hero-half.red-side{ background:linear-gradient(-20deg, rgba(255,82,82,0.08), transparent 55%), var(--bg-deep); align-items:flex-start; text-align:left; }
+.hero-half .hero-inner{ max-width:460px; }
+.hero-tag{ font-family:var(--font-mono); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--blue); margin-bottom:22px; opacity:0; }
+.hero-half.red-side .hero-tag{ color:var(--red); }
+.hero-name{ font-size:clamp(32px,4.2vw,54px); line-height:1.03; letter-spacing:-.01em; opacity:0; }
+.hero-role{ font-family:var(--font-mono); font-size:14px; color:var(--text-muted); margin-top:16px; opacity:0; }
+.hero-role b{ color:var(--text); font-weight:600; }
+.hero-desc{ margin-top:22px; color:var(--text-muted); font-size:15px; line-height:1.75; opacity:0; }
+.hero-half.blue-side .hero-desc{ margin-left:auto; }
+.hero-cta{ margin-top:30px; display:flex; gap:12px; opacity:0; }
+.hero-half.blue-side .hero-cta{ justify-content:flex-end; }
+.btn{
+  font-family:var(--font-mono); font-size:12.5px; letter-spacing:.05em; text-transform:uppercase;
+  padding:13px 22px; border-radius:12px; border:1px solid var(--glass-border); background:var(--glass);
+  backdrop-filter:blur(10px); transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn.blue{ color:var(--blue); }
+.btn.blue:hover{ border-color:var(--blue-line); box-shadow:0 8px 22px rgba(63,146,255,0.14); }
+.btn.red{ color:var(--red); }
+.btn.red:hover{ border-color:var(--red-line); box-shadow:0 8px 22px rgba(255,82,82,0.12); }
+
+.hero-divider{ position:absolute; top:74px; bottom:0; left:50%; width:1px; background:linear-gradient(to bottom, transparent, var(--line) 12%, var(--line) 88%, transparent); z-index:2; }
+.scanline{ position:absolute; left:50%; width:1px; height:90px; background:linear-gradient(to bottom, transparent, var(--blue), var(--red), transparent); top:74px; filter:blur(.3px); z-index:2; }
+.hero-mark{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:5; opacity:0;
+  width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-size:10px; color:var(--text); background:var(--panel);
+  box-shadow:9px 9px 20px var(--shadow-dark), -7px -7px 18px var(--shadow-light); border:1px solid var(--glass-border);
+  text-align:center; line-height:1.2;
+}
+@media (max-width:860px){
+  .hero{ grid-template-columns:1fr; }
+  .hero-half{ padding:48px 26px; min-height:58vh; align-items:flex-start !important; text-align:left !important; }
+  .hero-half.blue-side .hero-desc, .hero-half.blue-side .hero-cta{ margin-left:0; justify-content:flex-start !important; }
+  .hero-divider, .scanline, .hero-mark{ display:none; }
+}
+
+/* log ticker */
+.log-strip{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(255,255,255,0.012); overflow:hidden; white-space:nowrap; padding:14px 0; position:relative; z-index:1; }
+.log-strip .log-track{ display:inline-flex; gap:48px; font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); padding-left:100%; animation:ticker 38s linear infinite; }
+.log-strip .log-track span{ color:var(--blue); }
+.log-strip .log-track b{ color:var(--red); font-weight:500; }
+@keyframes ticker{ from{ transform:translateX(0);} to{ transform:translateX(-100%);} }
+@media (prefers-reduced-motion: reduce){ .log-strip .log-track{ animation:none; } }
+
+/* asymmetric two column (about) */
+.split-asym{ display:grid; grid-template-columns:0.6fr 1.4fr; gap:64px; align-items:start; }
+@media (max-width:860px){ .split-asym{ grid-template-columns:1fr; } }
+.stat-block{ margin-bottom:34px; }
+.stat-num{ font-family:var(--font-display); font-size:44px; color:var(--blue); line-height:1; }
+.stat-num.r{ color:var(--red); }
+.stat-label{ font-family:var(--font-mono); font-size:12px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.1em; margin-top:8px; }
+.lede{ font-size:15px; color:var(--text-muted); line-height:1.85; }
+.lede + .lede{ margin-top:16px; }
+.lede b{ color:var(--text); font-weight:600; }
+
+/* reveal */
+.reveal{ opacity:0; transform:translateY(24px); }
+
+/* head row */
+.head-row{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:54px; gap:24px; flex-wrap:wrap; }
+.head-row h2{ font-size:clamp(24px,3vw,32px); }
+.head-row .note{ font-family:var(--font-mono); font-size:12px; color:var(--text-faint); max-width:320px; text-align:right; }
+@media (max-width:700px){ .head-row .note{ text-align:left; } }
+
+/* project entries */
+.project-entry{ display:grid; grid-template-columns:220px 1fr; gap:48px; padding:52px 0; border-top:1px solid var(--line); }
+.project-entry:last-child{ border-bottom:1px solid var(--line); }
+.project-meta{ position:sticky; top:110px; }
+.project-meta .tag{ font-family:var(--font-mono); font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px; }
+.project-meta .role{ color:var(--blue); font-family:var(--font-mono); font-size:12.5px; }
+.project-meta .role.r{ color:var(--red); }
+.project-body h3{ font-size:24px; max-width:640px; }
+.project-body .desc{ margin-top:14px; color:var(--text-muted); font-size:15px; max-width:640px; line-height:1.8; }
+.bullet-list{ margin-top:22px; display:flex; flex-direction:column; gap:13px; max-width:640px; }
+.bullet-list li{ display:flex; gap:14px; align-items:flex-start; color:var(--text-muted); font-size:14.5px; line-height:1.7; }
+.bullet-list li .mk{ flex:none; width:6px; height:6px; border-radius:50%; background:var(--blue); margin-top:8px; box-shadow:0 0 6px var(--blue); }
+.project-entry.rt .bullet-list li .mk{ background:var(--red); box-shadow:0 0 6px var(--red); }
+.stack-row{ margin-top:22px; display:flex; flex-wrap:wrap; gap:8px; }
+.chip{ font-family:var(--font-mono); font-size:11.5px; padding:7px 12px; border-radius:20px; border:1px solid var(--glass-border); color:var(--text-muted); background:var(--glass); }
+.takeaway{ margin-top:22px; padding:18px 22px; border-left:2px solid var(--blue); background:rgba(255,255,255,0.02); border-radius:0 12px 12px 0; color:var(--text-muted); font-size:14px; line-height:1.75; max-width:640px; }
+.project-entry.rt .takeaway{ border-left-color:var(--red); }
+@media (max-width:760px){ .project-entry{ grid-template-columns:1fr; gap:18px; } .project-meta{ position:static; } }
+
+/* research callout note */
+.research-note{ margin-bottom:44px; padding:22px 26px; border-radius:var(--r-md); font-size:14px; color:var(--text-muted); line-height:1.7; }
+.research-note b{ color:var(--red); }
+
+/* timeline (experience) */
+.timeline-item{ display:grid; grid-template-columns:280px 1fr; gap:48px; padding:44px 0; border-top:1px solid var(--line); }
+.timeline-item:last-child{ border-bottom:1px solid var(--line); }
+.t-head{ position:sticky; top:110px; }
+.t-head .period{ font-family:var(--font-mono); font-size:12px; color:var(--blue); letter-spacing:.05em; }
+.t-head h3{ font-size:21px; margin-top:10px; }
+.t-head .org{ color:var(--text-muted); font-size:13.5px; margin-top:6px; }
+.t-body ul{ display:flex; flex-direction:column; gap:13px; max-width:600px; }
+.t-body li{ display:flex; gap:14px; color:var(--text-muted); font-size:14.5px; line-height:1.75; }
+.t-body li .mk{ flex:none; width:6px; height:6px; margin-top:8px; border-radius:50%; background:var(--blue); box-shadow:0 0 6px var(--blue); }
+@media (max-width:760px){ .timeline-item{ grid-template-columns:1fr; gap:16px; } .t-head{ position:static; } }
+
+/* skills */
+.skill-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
+@media (max-width:760px){ .skill-grid{ grid-template-columns:1fr; } }
+.skill-group{ padding:30px; border-radius:var(--r-md); }
+.skill-group h3{ font-size:16.5px; margin-bottom:4px; }
+.skill-group .count{ font-family:var(--font-mono); font-size:11.5px; color:var(--text-faint); }
+.tag-cloud{ margin-top:18px; display:flex; flex-wrap:wrap; gap:9px; }
+.tag-pill{ font-family:var(--font-mono); font-size:12px; padding:8px 14px; border-radius:11px; color:var(--text-muted); background:rgba(255,255,255,0.02); border:1px solid var(--glass-border); transition:transform .2s ease, color .2s ease, border-color .2s ease; }
+.tag-pill:hover{ transform:translateY(-2px); color:var(--blue); border-color:var(--blue-line); }
+
+/* credentials */
+.cred-list{ display:flex; flex-direction:column; }
+.cred-row{ display:flex; justify-content:space-between; align-items:baseline; gap:20px; padding:20px 0; border-top:1px solid var(--line); }
+.cred-row:first-child{ border-top:0; }
+.cred-row .name{ font-size:14.5px; color:var(--text); max-width:70%; }
+.cred-row .src{ font-family:var(--font-mono); font-size:11.5px; color:var(--text-faint); white-space:nowrap; }
+
+.profile-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:20px; }
+@media (max-width:860px){ .profile-grid{ grid-template-columns:1fr; } }
+.profile-card{ padding:26px; border-radius:var(--r-md); display:flex; flex-direction:column; gap:14px; }
+.profile-card .glyph{ width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:var(--blue-soft); color:var(--blue); font-family:var(--font-mono); font-size:15px; }
+.profile-card.r .glyph{ background:var(--red-soft); color:var(--red); }
+.profile-card h4{ font-size:15.5px; }
+.profile-card p{ color:var(--text-muted); font-size:13px; line-height:1.6; }
+.profile-card .go{ margin-top:auto; font-family:var(--font-mono); font-size:12px; color:var(--blue); display:flex; align-items:center; gap:8px; transition:gap .25s ease; }
+.profile-card.r .go{ color:var(--red); }
+.profile-card:hover .go{ gap:14px; }
+
+/* github callout */
+.gh-callout{ padding:56px; border-radius:var(--r-lg); display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; }
+.gh-callout h3{ font-size:26px; max-width:520px; }
+.gh-callout p{ margin-top:14px; color:var(--text-muted); font-size:14.5px; max-width:520px; line-height:1.75; }
+
+/* ---------- SOC CONSOLE — LIVE TELEMETRY ---------- */
+.soc-console{ border-radius:var(--r-lg); overflow:hidden; }
+.soc-head{ padding:18px 26px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.015); }
+.soc-title{ font-family:var(--font-mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); display:flex; align-items:center; gap:10px; }
+.soc-live{ font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:7px; }
+.soc-live::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--red); box-shadow:0 0 8px var(--red); animation:socPulse 1.5s ease-in-out infinite; }
+@keyframes socPulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+.soc-body{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); }
+@media (max-width:760px){ .soc-body{ grid-template-columns:1fr; } }
+.soc-panel{ background:var(--panel); padding:22px 24px; min-height:220px; display:flex; flex-direction:column; }
+.soc-panel-title{ font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint); display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+.soc-status{ font-size:10px; padding:3px 10px; border-radius:20px; background:var(--blue-soft); color:var(--blue); border:1px solid var(--blue-line); }
+.soc-status.warn{ background:rgba(255,178,64,0.1); color:#ffb240; border-color:rgba(255,178,64,0.3); }
+.soc-status.ok{ background:rgba(70,210,150,0.1); color:#46d296; border-color:rgba(70,210,150,0.3); }
+.soc-content{ font-family:var(--font-mono); font-size:12px; color:var(--text-muted); line-height:1.7; flex:1; overflow:hidden; }
+.soc-line{ display:flex; gap:10px; padding:4px 0; border-bottom:1px solid var(--line); }
+.soc-time{ color:var(--text-faint); white-space:nowrap; font-size:10.5px; }
+.soc-sev{ width:5px; height:5px; border-radius:50%; margin-top:6px; flex-shrink:0; }
+.soc-sev.info{ background:var(--blue); } .soc-sev.warn{ background:#ffb240; } .soc-sev.crit{ background:var(--red); } .soc-sev.ok{ background:#46d296; }
+.soc-msg{ font-size:12px; color:var(--text-muted); }
+.soc-msg .hl{ color:var(--blue); } .soc-msg .warn{ color:#ffb240; } .soc-msg .crit{ color:var(--red); }
+.soc-metric-row{ display:flex; gap:12px; margin-bottom:12px; }
+.soc-metric{ flex:1; background:rgba(255,255,255,0.02); border:1px solid var(--glass-border); border-radius:10px; padding:10px 12px; text-align:center; }
+.soc-metric-val{ font-family:var(--font-mono); font-size:19px; font-weight:700; color:var(--blue); line-height:1; }
+.soc-metric-val.ok{ color:#46d296; }
+.soc-metric-label{ font-family:var(--font-mono); font-size:9.5px; color:var(--text-faint); margin-top:5px; letter-spacing:.06em; }
+.soc-threat-bar{ width:100%; height:6px; background:var(--line); border-radius:3px; overflow:hidden; margin-bottom:14px; }
+.soc-threat-fill{ height:100%; border-radius:3px; background:linear-gradient(90deg,#46d296,#ffb240,var(--red)); transition:width .8s ease; }
+.soc-mitre-label{ font-size:10.5px; color:var(--text-faint); margin-bottom:6px; }
+.soc-geo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px; }
+.soc-geo-item{ background:rgba(255,255,255,0.02); border:1px solid var(--glass-border); border-radius:9px; padding:8px 6px; text-align:center; }
+.soc-geo-flag{ font-size:15px; margin-bottom:2px; }
+.soc-geo-code{ font-family:var(--font-mono); font-size:9.5px; color:var(--text-faint); }
+.soc-geo-count{ font-family:var(--font-mono); font-size:11px; color:var(--blue); font-weight:600; }
+.soc-ioc-label{ font-size:10.5px; color:var(--text-faint); margin-bottom:6px; padding-top:10px; border-top:1px solid var(--line); font-weight:600; }
+.soc-ioc div{ font-size:11px; padding:2px 0; }
+
+/* footer */
+.site-footer{ border-top:1px solid var(--line); padding:50px 0; position:relative; z-index:1; }
+.site-footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.site-footer .fmark{ font-family:var(--font-mono); font-size:12px; color:var(--text-faint); }
+.site-footer .flinks{ display:flex; gap:22px; flex-wrap:wrap; }
+.site-footer .flinks a{ font-family:var(--font-mono); font-size:12px; color:var(--text-muted); }
+.site-footer .flinks a:hover{ color:var(--blue); }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="bracket">[</span>ARUNATHISH<span class="bracket r">]</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+    </ul>
+    <a class="nav-cta" href="https://github.com/Arunathish" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-divider"></div>
+  <div class="scanline"></div>
+
+  <div class="hero-half blue-side">
+    <div class="hero-inner">
+      <p class="hero-tag">Defense // Blue Team</p>
+      <h1 class="hero-name">Arunathish<br>R&nbsp;V</h1>
+      <p class="hero-role">Cybersecurity Analyst — <b>Blue Team</b> with Red Team Knowledge</p>
+      <p class="hero-desc">SOC-style investigations, threat hunting, malware analysis, and log correlation across Splunk, Wazuh, ELK, and Suricata — every finding mapped back to MITRE ATT&amp;CK before it becomes a missed detection.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn blue">Projects →</a>
+        <a href="#credentials" class="btn blue">Credentials →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-half red-side">
+    <div class="hero-inner">
+      <p class="hero-tag">Offense // Red Team Knowledge</p>
+      <h1 class="hero-name">Adversary<br>Awareness</h1>
+      <p class="hero-role">API security assessment · responsible disclosure · HTB pentesting path</p>
+      <p class="hero-desc">Working knowledge of offensive tradecraft — API assessment, enumeration, and a chained attack path built for a real responsible disclosure — used to sharpen the defense on the other side of the wire.</p>
+      <div class="hero-cta">
+        <a href="#research" class="btn red">Security Research →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:64px; padding-bottom:64px;" id="console">
+  <div class="wrap">
+    <div class="soc-console panel-card reveal" style="padding:0;">
+      <div class="soc-head">
+        <div class="soc-title"><span class="eyebrow" style="margin:0;"><span class="dot"></span></span> SOC Console — Live Telemetry</div>
+        <div class="soc-live">LIVE</div>
+      </div>
+      <div class="soc-body">
+        <div class="soc-panel">
+          <div class="soc-panel-title"><span>Event Feed</span><span class="soc-status">ACTIVE</span></div>
+          <div class="soc-content" id="soc-feed"></div>
+        </div>
+        <div class="soc-panel">
+          <div class="soc-panel-title"><span>Threat Intelligence</span><span class="soc-status warn">ELEVATED</span></div>
+          <div class="soc-content">
+            <div class="soc-metric-row">
+              <div class="soc-metric"><div class="soc-metric-val" id="soc-score">42</div><div class="soc-metric-label">THREAT SCORE</div></div>
+              <div class="soc-metric"><div class="soc-metric-val ok" id="soc-alerts">12</div><div class="soc-metric-label">ALERTS</div></div>
+            </div>
+            <div class="soc-threat-bar"><div class="soc-threat-fill" id="soc-threat-bar" style="width:42%"></div></div>
+            <div class="soc-mitre-label">MITRE ATT&amp;CK Coverage</div>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <span class="chip">T1110</span><span class="chip">T1059</span><span class="chip">T1078</span><span class="chip">T1003</span>
+            </div>
+          </div>
+        </div>
+        <div class="soc-panel">
+          <div class="soc-panel-title"><span>Platform Health</span><span class="soc-status ok">HEALTHY</span></div>
+          <div class="soc-content">
+            <div class="soc-line"><span class="soc-sev ok"></span><span class="soc-msg">Wazuh <span class="hl">●</span> Agent sync OK</span></div>
+            <div class="soc-line"><span class="soc-sev ok"></span><span class="soc-msg">Suricata <span class="hl">●</span> Rules loaded: 28471</span></div>
+            <div class="soc-line"><span class="soc-sev ok"></span><span class="soc-msg">Elastic <span class="hl">●</span> Cluster green</span></div>
+            <div class="soc-line"><span class="soc-sev warn"></span><span class="soc-msg">EDR <span class="warn">●</span> 2 agents offline</span></div>
+            <div class="soc-line"><span class="soc-sev ok"></span><span class="soc-msg">Sysmon <span class="hl">●</span> 847 events/min</span></div>
+            <div class="soc-line" style="border-bottom:0;"><span class="soc-sev ok"></span><span class="soc-msg">Sigma <span class="hl">●</span> 156 rules active</span></div>
+          </div>
+        </div>
+        <div class="soc-panel">
+          <div class="soc-panel-title"><span>GeoIP &amp; IOC Feed</span><span class="soc-status">LIVE</span></div>
+          <div class="soc-content">
+            <div class="soc-geo-grid">
+              <div class="soc-geo-item"><div class="soc-geo-flag">🇷🇺</div><div class="soc-geo-code">RU</div><div class="soc-geo-count">47</div></div>
+              <div class="soc-geo-item"><div class="soc-geo-flag">🇨🇳</div><div class="soc-geo-code">CN</div><div class="soc-geo-count">23</div></div>
+              <div class="soc-geo-item"><div class="soc-geo-flag">🇺🇸</div><div class="soc-geo-code">US</div><div class="soc-geo-count">12</div></div>
+              <div class="soc-geo-item"><div class="soc-geo-flag">🇧🇷</div><div class="soc-geo-code">BR</div><div class="soc-geo-count">8</div></div>
+              <div class="soc-geo-item"><div class="soc-geo-flag">🇮🇳</div><div class="soc-geo-code">IN</div><div class="soc-geo-count">5</div></div>
+              <div class="soc-geo-item"><div class="soc-geo-flag">🇩🇪</div><div class="soc-geo-code">DE</div><div class="soc-geo-count">3</div></div>
+            </div>
+            <div class="soc-ioc-label">Recent IOCs</div>
+            <div id="soc-ioc">
+              <div>192.168.1.105 <span class="crit" style="color:var(--red);">●</span> Brute-force</div>
+              <div>malware.exe <span class="warn" style="color:#ffb240;">●</span> Trojan.Generic</div>
+              <div>phish.link <span class="crit" style="color:var(--red);">●</span> Credential Harvest</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="log-strip">
+  <div class="log-track">
+    <span>[SIEM]</span> wazuh alert correlated across index
+    <b>[HTB]</b> sherlock investigation in progress
+    <span>[IOC]</span> hash cross-checked against VirusTotal
+    <b>[MITRE]</b> technique mapped — T1059
+    <span>[IDS]</span> suricata rule triggered on inbound scan
+    <b>[FORENSIC]</b> artifact parsed with eric zimmerman tools
+    <span>[DNS]</span> query flagged by pi-hole blocklist
+    <b>[RED]</b> fastapi endpoint enumerated
+    <span>[SOC]</span> phishing indicator confirmed
+    <b>[GITHUB]</b> investigation write-up pushed to repo
+    <span>[SIEM]</span> wazuh alert correlated across index
+    <b>[HTB]</b> sherlock investigation in progress
+    <span>[IOC]</span> hash cross-checked against VirusTotal
+    <b>[MITRE]</b> technique mapped — T1059
+    <span>[IDS]</span> suricata rule triggered on inbound scan
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="split-asym">
+      <div class="col-a">
+        <div class="stat-block reveal">
+          <div class="stat-num" data-count="3">0</div>
+          <div class="stat-label">Independent security projects</div>
+        </div>
+        <div class="stat-block reveal" data-delay="80">
+          <div class="stat-num r" data-count="2">0</div>
+          <div class="stat-label">Security assessments &amp; responsible disclosures</div>
+        </div>
+        <div class="stat-block reveal" data-delay="160">
+          <div class="stat-num" data-count="45" data-suffix="+">0</div>
+          <div class="stat-label">Tools across the defense &amp; offense stack</div>
+        </div>
+      </div>
+      <div class="col-b">
+        <p class="eyebrow"><span class="dot"></span> Profile</p>
+        <p class="lede reveal">A cybersecurity analyst working the <b>blue team</b> side of the wire — SOC-style investigations, threat hunting, malware analysis, digital forensics, and SIEM log correlation across Splunk, Wazuh, and the ELK Stack, framed against MITRE ATT&amp;CK so every detection has a reason behind it.</p>
+        <p class="lede reveal" data-delay="100">That defense is backed by <b>red team knowledge</b> — an authorized FastAPI security assessment, a chained responsible disclosure, and the HTB Academy penetration tester path — because understanding how an attacker actually moves makes the detection logic that follows sharper. Backed by enterprise networking experience from a college infrastructure internship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> 01 — Build</p>
+        <h2>Projects</h2>
+      </div>
+      <p class="note">Independent and academic work — built, documented, and defended end to end.</p>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-meta">
+        <p class="tag">2024 – 2025</p>
+        <p class="role">Final Year Project</p>
+      </div>
+      <div class="project-body">
+        <h3>Detecting Cyber Attacks in Web Applications Using Honeypot with Distributed Log Management</h3>
+        <p class="desc">Designed and deployed a centralized attack-monitoring platform that collects, correlates, and visualizes attack telemetry from multiple security tools in one pipeline — attacker → honeypot → IDS → SIEM → dashboard.</p>
+        <ul class="bullet-list">
+          <li><span class="mk"></span>Deployed Cowrie Honeypot, Suricata IDS, and Wazuh SIEM feeding into Logstash, Elasticsearch, and Kibana.</li>
+          <li><span class="mk"></span>Simulated SSH brute-force attacks, reconnaissance activity, and malicious login attempts to generate realistic security telemetry.</li>
+          <li><span class="mk"></span>Tuned Suricata detection rules, reducing recurring false positives during simulated attack scenarios.</li>
+          <li><span class="mk"></span>Correlated Windows Event IDs (4624, 4625, 4672, 4688, 7045) to reconstruct attack timelines and identify attacker behavior.</li>
+          <li><span class="mk"></span>Built Kibana dashboards visualizing authentication events, brute-force activity, and privilege escalation.</li>
+          <li><span class="mk"></span>Produced structured incident reports with IOCs, MITRE ATT&amp;CK mappings, and remediation recommendations.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="chip">Cowrie Honeypot</span><span class="chip">Suricata IDS</span><span class="chip">Wazuh</span>
+          <span class="chip">ELK Stack</span><span class="chip">Elasticsearch</span><span class="chip">Logstash</span>
+          <span class="chip">Kibana</span><span class="chip">Ubuntu</span><span class="chip">Python</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-meta">
+        <p class="tag">Self-Directed Lab · 2025</p>
+        <p class="role">Blue Team · Identity</p>
+      </div>
+      <div class="project-body">
+        <h3>Active Directory Lab &amp; Identity Control</h3>
+        <p class="desc">Built a lab-based Domain Controller environment to understand enterprise identity, authentication, and access enforcement from the inside.</p>
+        <ul class="bullet-list">
+          <li><span class="mk"></span>Built a lab-based Domain Controller and integrated Windows clients for authentication testing.</li>
+          <li><span class="mk"></span>Configured users, groups, and basic Group Policy Objects for access enforcement.</li>
+          <li><span class="mk"></span>Analyzed authentication logs to detect abnormal login patterns and privilege usage.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="chip">Active Directory</span><span class="chip">Group Policy</span>
+          <span class="chip">Kerberos</span><span class="chip">NTLM</span><span class="chip">Windows Server</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-meta">
+        <p class="tag">Home Lab Research · 2025</p>
+        <p class="role">Blue Team · Network Visibility</p>
+      </div>
+      <div class="project-body">
+        <h3>DNS Filtering &amp; Traffic Visibility</h3>
+        <p class="desc">Implemented DNS-level security using Pi-hole and NextDNS to understand how DNS filtering, logging, and policy enforcement improve — and limit — network visibility.</p>
+        <ul class="bullet-list">
+          <li><span class="mk"></span>Deployed Pi-hole as a local DNS sinkhole to block advertisements, trackers, and malicious domains.</li>
+          <li><span class="mk"></span>Configured NextDNS with custom blocklists, security policies, parental controls, and logging to compare cloud-based DNS filtering with local DNS filtering.</li>
+          <li><span class="mk"></span>Monitored DNS query logs to analyze client activity, outbound connections, and blocked domain requests.</li>
+          <li><span class="mk"></span>Investigated how DNS requests reveal endpoint behavior and communication patterns during normal browsing.</li>
+          <li><span class="mk"></span>Studied the impact of DNS over HTTPS (DoH) and DNS over TLS (DoT) on DNS visibility, and why encrypted DNS can bypass traditional DNS monitoring.</li>
+          <li><span class="mk"></span>Tested different network segmentation scenarios to observe how DNS policies and traffic visibility change across isolated networks.</li>
+          <li><span class="mk"></span>Compared the capabilities and limitations of Pi-hole and NextDNS in deployment, management, logging, and security features.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="chip">Pi-hole</span><span class="chip">NextDNS</span><span class="chip">DNS Logging &amp; Analysis</span>
+          <span class="chip">DoH / DoT</span><span class="chip">Network Monitoring</span><span class="chip">Network Segmentation</span>
+          <span class="chip">Traffic Analysis</span>
+        </div>
+        <div class="takeaway">
+          <b style="color:var(--blue)">Key takeaway —</b> DNS logs are a strong, underused signal for network monitoring and threat detection, but encrypted DNS (DoH/DoT) meaningfully limits that visibility — which is exactly why comparing self-hosted and cloud-based DNS filtering matters for real-world enterprise decisions.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH & RESPONSIBLE DISCLOSURE ============ -->
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow red"><span class="dot"></span> 02 — Offense Knowledge</p>
+        <h2>Security Research &amp; Responsible Disclosure</h2>
+      </div>
+      <p class="note">Two disclosures completed to date — full methodology write-ups are being prepared for GitHub.</p>
+    </div>
+
+    <div class="project-entry rt">
+      <div class="project-meta">
+        <p class="tag">Independent Assessment · 2026</p>
+        <p class="role r">Red Team Knowledge</p>
+      </div>
+      <div class="project-body">
+        <h3>FastAPI Security Assessment</h3>
+        <p class="desc">Performed a security assessment of a FastAPI web application to understand common API vulnerabilities, authentication mechanisms, and secure API design.</p>
+        <ul class="bullet-list">
+          <li><span class="mk"></span>Identified and mapped API endpoints through manual exploration and testing.</li>
+          <li><span class="mk"></span>Interacted with REST API endpoints using HTTP requests to analyze request/response behavior.</li>
+          <li><span class="mk"></span>Tested authentication and authorization controls for potential access control weaknesses.</li>
+          <li><span class="mk"></span>Validated input handling to identify improper validation and potential injection risks.</li>
+          <li><span class="mk"></span>Analyzed HTTP headers, status codes, JSON responses, and error messages for information disclosure.</li>
+          <li><span class="mk"></span>Documented findings, attack methodology, and remediation guidance in a structured security assessment.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="chip">FastAPI</span><span class="chip">REST API Security</span><span class="chip">Authentication Testing</span>
+          <span class="chip">Authorization Testing</span><span class="chip">HTTP Protocol</span><span class="chip">JSON</span>
+          <span class="chip">Technical Reporting</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-entry rt">
+      <div class="project-meta">
+        <p class="tag">Feb 2026</p>
+        <p class="role r">Red Team Knowledge</p>
+      </div>
+      <div class="project-body">
+        <h3>Responsible Disclosure — Institutional Web Infrastructure</h3>
+        <p class="desc">Identified and responsibly disclosed multiple web infrastructure misconfigurations, chaining low-severity findings into a realistic attack path.</p>
+        <ul class="bullet-list">
+          <li><span class="mk"></span>Identified exposed Git repositories, directory listings, unauthenticated JSON endpoints, and publicly indexed sensitive documents.</li>
+          <li><span class="mk"></span>Demonstrated a realistic attack path by chaining reconnaissance, information disclosure, and credential exposure findings.</li>
+          <li><span class="mk"></span>Mapped identified techniques to the MITRE ATT&amp;CK framework.</li>
+          <li><span class="mk"></span>Delivered structured remediation recommendations and received formal institutional acknowledgment for the disclosure.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="chip">Reconnaissance</span><span class="chip">Information Disclosure</span>
+          <span class="chip">Attack Path Mapping</span><span class="chip">MITRE ATT&amp;CK</span><span class="chip">Responsible Disclosure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> 03 — Field</p>
+        <h2>Experience</h2>
+      </div>
+      <p class="note">Enterprise networking foundations, plus structured SOC-style practice across four platforms.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="t-head">
+        <p class="period">Mar 2025 – May 2025</p>
+        <h3>Network Support Engineer Intern</h3>
+        <p class="org">Amrita Vishwa Vidyapeetham — Nagercoil</p>
+      </div>
+      <div class="t-body">
+        <ul>
+          <li><span class="mk"></span>Configured VLAN segmentation and ACL policies across enterprise network infrastructure to improve network isolation and security.</li>
+          <li><span class="mk"></span>Diagnosed DNS, IP addressing, routing, and connectivity issues in production environments using protocol-level troubleshooting.</li>
+          <li><span class="mk"></span>Maintained network configurations and access control documentation, supporting operational stability and audit readiness.</li>
+          <li><span class="mk"></span>Gained hands-on experience with enterprise network architecture, authentication workflows, and Windows-based environments relevant to security investigations.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item rev">
+      <div class="t-head">
+        <p class="period">2025 – 2026</p>
+        <h3>SOC Operations Simulation</h3>
+        <p class="org">Hack The Box Academy · LetsDefend · TCM Security · TryHackMe</p>
+      </div>
+      <div class="t-body">
+        <ul>
+          <li><span class="mk"></span>Performed security monitoring and alert triage across endpoint, authentication, and network telemetry by following investigation playbooks in realistic SOC scenarios.</li>
+          <li><span class="mk"></span>Investigated phishing attacks by analyzing email headers, URLs, attachments, hashes, and domains using VirusTotal and URLScan.</li>
+          <li><span class="mk"></span>Conducted static and dynamic malware analysis to identify persistence mechanisms, command-and-control activity, and IOCs.</li>
+          <li><span class="mk"></span>Performed Windows forensic investigations using Event Viewer, Sysmon, Process Monitor, Process Explorer, Registry artifacts, Scheduled Tasks, and Services.</li>
+          <li><span class="mk"></span>Correlated endpoint telemetry, Windows logs, and network events to reconstruct attack timelines and determine incident scope.</li>
+          <li><span class="mk"></span>Applied MITRE ATT&amp;CK techniques to classify adversary behavior and documented findings in structured case reports.</li>
+          <li><span class="mk"></span>Validated alerts, identified recurring false positives across simulated scenarios, and recommended improvements to detection logic.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> 04 — Stack</p>
+        <h2>Skills &amp; Tools</h2>
+      </div>
+      <p class="note">Blue-team core, backed by malware analysis, forensics, and red-team-adjacent tooling.</p>
+    </div>
+
+    <div class="skill-grid">
+      <div class="skill-group panel-card reveal">
+        <h3>SIEM &amp; Detection</h3>
+        <p class="count">Splunk · ELK · Wazuh · Suricata</p>
+        <div class="tag-cloud">
+          <span class="tag-pill">Splunk</span><span class="tag-pill">Wazuh</span><span class="tag-pill">Elasticsearch</span>
+          <span class="tag-pill">Logstash</span><span class="tag-pill">Kibana</span><span class="tag-pill">Suricata IDS</span>
+        </div>
+      </div>
+      <div class="skill-group panel-card reveal" data-delay="60">
+        <h3>Threat Detection &amp; IR</h3>
+        <p class="count">Alert triage · threat hunting · MITRE ATT&amp;CK</p>
+        <div class="tag-cloud">
+          <span class="tag-pill">Alert Triage</span><span class="tag-pill">Threat Hunting</span><span class="tag-pill">Log Correlation</span>
+          <span class="tag-pill">IOC Investigation</span><span class="tag-pill">Timeline Reconstruction</span><span class="tag-pill">MITRE ATT&amp;CK Mapping</span>
+          <span class="tag-pill">Detection Tuning</span><span class="tag-pill">Sigma</span><span class="tag-pill">YARA</span>
+        </div>
+      </div>
+      <div class="skill-group panel-card reveal" data-delay="120">
+        <h3>Windows &amp; Endpoint</h3>
+        <p class="count">Event logs · Sysmon · registry &amp; process analysis</p>
+        <div class="tag-cloud">
+          <span class="tag-pill">Windows Event Logs</span><span class="tag-pill">Sysmon</span><span class="tag-pill">Process Monitor</span>
+          <span class="tag-pill">Process Explorer</span><span class="tag-pill">Registry Analysis</span><span class="tag-pill">Scheduled Tasks</span>
+          <span class="tag-pill">Autoruns</span>
+        </div>
+      </div>
+      <div class="skill-group panel-card reveal" data-delay="180">
+        <h3>Malware Analysis &amp; RE</h3>
+        <p class="count">Static &amp; dynamic analysis · PE inspection</p>
+        <div class="tag-cloud">
+          <span class="tag-pill">PE Studio</span><span class="tag-pill">Detect It Easy</span><span class="tag-pill">FLOSS</span>
+          <span class="tag-pill">HxD</span><span class="tag-pill">Cutter</span><span class="tag-pill">x64dbg</span><span class="tag-pill">x32dbg</span>
+        </div>
+      </div>
+      <div class="skill-group panel-card reveal" data-delay="240">
+        <h3>Digital Forensics</h3>
+        <p class="count">Artifact &amp; event log analysis</p>
+        <div class="tag-cloud">
+          <span class="tag-pill">FTK Imager</span><span class="tag-pill">Event Log Explorer</span><span class="tag-pill">Eric Zimmerman Tools</span>
+          <span class="tag-pill">TCPView</span>
+        </div>
+      </div>
+      <div class="skill-group panel-card reveal" data-delay="300">
+        <h3>Networking &amp; Identity</h3>
+        <p class="count">Protocols · authentication · DNS visibility</p>
+        <div class="tag-cloud">
+          <span class="tag-pill">TCP/IP</span><span class="tag-pill">DNS</span><span class="tag-pill">DoH / DoT</span><span class="tag-pill">HTTP/HTTPS</span>
+          <span class="tag-pill">SMB</span><span class="tag-pill">Wireshark</span><span class="tag-pill">Active Directory</span>
+          <span class="tag-pill">Kerberos &amp; NTLM</span><span class="tag-pill">Group Policy</span>
+        </div>
+      </div>
+      <div class="skill-group panel-card reveal" data-delay="360">
+        <h3>Threat Intelligence &amp; Scripting</h3>
+        <p class="count">Enrichment · automation</p>
+        <div class="tag-cloud">
+          <span class="tag-pill">VirusTotal</span><span class="tag-pill">URLScan</span><span class="tag-pill">Python</span>
+          <span class="tag-pill">PowerShell</span><span class="tag-pill">Bash</span><span class="tag-pill">SQL</span><span class="tag-pill">OSQuery</span>
+        </div>
+      </div>
+      <div class="skill-group panel-card reveal" data-delay="420">
+        <h3>Red Team Knowledge</h3>
+        <p class="count">API testing · recon · assessment tooling</p>
+        <div class="tag-cloud">
+          <span class="tag-pill">Nmap</span><span class="tag-pill">Nikto</span><span class="tag-pill">SQLMap</span>
+          <span class="tag-pill">Nessus</span><span class="tag-pill">CyberChef</span><span class="tag-pill">Velociraptor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDENTIALS ============ -->
+<section class="section" id="credentials">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> 05 — Proof</p>
+        <h2>Credentials &amp; Verified Profiles</h2>
+      </div>
+      <p class="note">Certifications, training paths, and public profiles you can verify directly.</p>
+    </div>
+
+    <div class="cred-list panel-card reveal">
+      <div class="cred-row"><span class="name">SOC 101 — Security Operations Center Fundamentals</span><span class="src">TCM Security</span></div>
+      <div class="cred-row"><span class="name">SOC 201 — Intermediate Security Operations &amp; Incident Response</span><span class="src">TCM Security</span></div>
+      <div class="cred-row"><span class="name">Windows Forensics</span><span class="src">TCM Security</span></div>
+      <div class="cred-row"><span class="name">Practical Malware Analysis &amp; Triage</span><span class="src">TCM Security</span></div>
+      <div class="cred-row"><span class="name">Penetration Tester Job Path</span><span class="src">Hack The Box Academy</span></div>
+      <div class="cred-row"><span class="name">SOC Analyst Learning Path</span><span class="src">LetsDefend</span></div>
+      <div class="cred-row"><span class="name">Blue Team Labs — Top 15% ranking</span><span class="src">TryHackMe</span></div>
+      <div class="cred-row"><span class="name">Bachelor of Engineering — Computer Science (2021 – 2025)</span><span class="src">Amrita College of Engineering</span></div>
+    </div>
+
+    <div class="profile-grid">
+      <a class="profile-card panel-card reveal" href="https://profile.hackthebox.com/profile/019c5be0-355e-7380-b03c-813eddfbfc87" target="_blank" rel="noopener">
+        <div class="glyph">HTB</div>
+        <h4>Hack The Box</h4>
+        <p>Academy modules, Sherlocks, and practical labs — blue-team focused investigation work.</p>
+        <span class="go">View public profile →</span>
+      </a>
+      <a class="profile-card panel-card reveal" data-delay="60" href="https://app.letsdefend.io/user/Arunathish" target="_blank" rel="noopener">
+        <div class="glyph">LD</div>
+        <h4>LetsDefend</h4>
+        <p>SOC Analyst learning path — malware, phishing, and Windows investigation case work.</p>
+        <span class="go">View public profile →</span>
+      </a>
+      <a class="profile-card panel-card reveal r" data-delay="120" href="https://github.com/Arunathish" target="_blank" rel="noopener">
+        <div class="glyph">GH</div>
+        <h4>GitHub</h4>
+        <p>SOC investigations, malware analysis, detection engineering, threat hunting &amp; OSINT write-ups.</p>
+        <span class="go">View repositories →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GITHUB CALLOUT ============ -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="gh-callout panel-card reveal">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> Always shipping</p>
+        <h3>Investigation write-ups and research are being published on GitHub — with more incoming.</h3>
+        <p>SOC case reports, the ValleyRAT malware analysis, detection logic, and the Attack Path OSINT playbook are in progress. Star the repos to follow along as new investigations land.</p>
+      </div>
+      <a class="btn blue" href="https://github.com/Arunathish" target="_blank" rel="noopener">Visit GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="fmark">Nagercoil, Tamil Nadu, India</p>
+    <div class="flinks">
+      <a href="mailto:arunrishi.zxc@gmail.com">arunrishi.zxc@gmail.com</a>
+      <a href="https://linkedin.com/in/arunathish" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Arunathish" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://profile.hackthebox.com/profile/019c5be0-355e-7380-b03c-813eddfbfc87" target="_blank" rel="noopener">Hack The Box</a>
+      <a href="https://app.letsdefend.io/user/Arunathish" target="_blank" rel="noopener">LetsDefend</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+/* ==========================================================
+   ANIME.JS — page interactions
+========================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  initNavToggle();
+  initPageFade();
+  initHeroSequence();
+  initScanline();
+  initReveal();
+  initCounters();
+  initCardTilt();
+  initNavScrollSpy();
+  initSocConsole();
+});
+
+function initNavToggle(){
+  const btn = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if(!btn || !links) return;
+  btn.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+}
+
+function initPageFade(){
+  if(typeof anime === 'undefined') return;
+  anime({ targets:'body', opacity:[0,1], duration:600, easing:'easeOutQuad' });
+  anime({ targets:'.site-nav', opacity:[0,1], translateY:[-16,0], duration:700, delay:200, easing:'easeOutCubic' });
+}
+
+function initHeroSequence(){
+  if(typeof anime === 'undefined') return;
+  const hero = document.querySelector('.hero');
+  if(!hero) return;
+  const tl = anime.timeline({ easing:'easeOutExpo' });
+  tl.add({ targets:'.hero-half.blue-side .hero-tag, .hero-half.red-side .hero-tag', opacity:[0,1], translateY:[16,0], duration:600 }, 250)
+    .add({ targets:'.hero-half.blue-side .hero-name, .hero-half.red-side .hero-name', opacity:[0,1], translateY:[26,0], duration:750 }, 350)
+    .add({ targets:'.hero-half.blue-side .hero-role, .hero-half.red-side .hero-role', opacity:[0,1], translateY:[16,0], duration:600 }, 600)
+    .add({ targets:'.hero-half.blue-side .hero-desc, .hero-half.red-side .hero-desc', opacity:[0,1], translateY:[16,0], duration:650 }, 700)
+    .add({ targets:'.hero-half.blue-side .hero-cta, .hero-half.red-side .hero-cta', opacity:[0,1], translateY:[12,0], duration:550 }, 850);
+
+  anime({ targets:'.hero-mark', scale:[0,1], opacity:[0,1], duration:700, delay:150, easing:'easeOutBack' });
+}
+
+function initScanline(){
+  if(typeof anime === 'undefined') return;
+  const line = document.querySelector('.scanline');
+  const hero = document.querySelector('.hero');
+  if(!line || !hero) return;
+  anime({
+    targets:'.scanline',
+    translateY:[0, hero.offsetHeight - 90],
+    opacity:[0,1,1,0],
+    duration:4200, easing:'easeInOutSine', loop:true, direction:'alternate'
+  });
+}
+
+function initReveal(){
+  const items = document.querySelectorAll('.reveal');
+  if(!items.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        if(typeof anime !== 'undefined'){
+          anime({ targets:entry.target, opacity:[0,1], translateY:[24,0], duration:800, easing:'easeOutCubic', delay:parseInt(entry.target.dataset.delay||0,10) });
+        } else {
+          entry.target.style.opacity = 1; entry.target.style.transform = 'none';
+        }
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15 });
+  items.forEach(el => io.observe(el));
+}
+
+function initCounters(){
+  const nums = document.querySelectorAll('[data-count]');
+  if(!nums.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const end = parseInt(el.dataset.count, 10);
+        const obj = { val:0 };
+        if(typeof anime !== 'undefined'){
+          anime({ targets:obj, val:end, duration:1400, easing:'easeOutExpo', round:1, update:() => { el.textContent = obj.val + (el.dataset.suffix||''); } });
+        } else {
+          el.textContent = end + (el.dataset.suffix||'');
+        }
+        io.unobserve(el);
+      }
+    });
+  }, { threshold:0.4 });
+  nums.forEach(el => io.observe(el));
+}
+
+function initCardTilt(){
+  const cards = document.querySelectorAll('.panel-card, .profile-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      if(typeof anime !== 'undefined'){
+        anime({ targets:card, rotateX:(-y*4)+'deg', rotateY:(x*6)+'deg', duration:300, easing:'easeOutQuad' });
+      }
+    });
+    card.addEventListener('mouseleave', () => {
+      if(typeof anime !== 'undefined'){
+        anime({ targets:card, rotateX:0, rotateY:0, duration:500, easing:'easeOutElastic(1, .6)' });
+      }
+    });
+  });
+}
+
+function initSocConsole(){
+  const feed = document.getElementById('soc-feed');
+  if(!feed) return;
+  const feedData=[
+    {sev:'crit',msg:'Unusual outbound <span class="crit">port 4444</span>'},
+    {sev:'info',msg:'Suricata updated <span class="hl">SID 2012647</span>'},
+    {sev:'warn',msg:'Event ID <span class="warn">4625</span> · logon failures'},
+    {sev:'ok',msg:'Wazuh agent · uptime <span class="hl">99.98%</span>'},
+    {sev:'info',msg:'MITRE <span class="hl">T1110</span> · Brute Force mapped'},
+    {sev:'info',msg:'IOC enrichment · <span class="hl">3 new indicators</span>'},
+    {sev:'crit',msg:'Alert triage · severity <span class="crit">HIGH</span>'},
+    {sev:'ok',msg:'Sysmon Event ID 1 · process creation'},
+    {sev:'info',msg:'Kibana · auth events visualized'},
+    {sev:'warn',msg:'Cowrie · <span class="warn">47</span> attempts blocked'},
+    {sev:'crit',msg:'SSH brute-force · <span class="crit">192.168.1.105</span>'},
+    {sev:'info',msg:'Sigma hit · <span class="hl">suspicious_powershell</span>'},
+    {sev:'warn',msg:'DNS tunneling · <span class="warn">high entropy</span>'},
+    {sev:'ok',msg:'Elastic cluster · <span class="hl">green</span>'},
+    {sev:'info',msg:'Threat intel · <span class="hl">MISP</span> updated'},
+    {sev:'crit',msg:'Privilege escalation · <span class="crit">4672</span>'},
+    {sev:'warn',msg:'Scheduled task · <span class="warn">Event 7045</span>'},
+    {sev:'ok',msg:'EDR scan · <span class="hl">0 threats</span>'},
+    {sev:'info',msg:'GeoIP · connection from <span class="hl">RU</span>'},
+    {sev:'crit',msg:'Malware · <span class="crit">Trojan.Generic</span>'}
+  ];
+  let idx = 0;
+  function addLine(){
+    const item = feedData[idx % feedData.length];
+    const time = new Date().toTimeString().split(' ')[0];
+    const line = document.createElement('div');
+    line.className = 'soc-line';
+    line.innerHTML = '<span class="soc-time">'+time+'</span><span class="soc-sev '+item.sev+'"></span><span class="soc-msg">'+item.msg+'</span>';
+    feed.insertBefore(line, feed.firstChild);
+    if(feed.children.length > 8) feed.removeChild(feed.lastChild);
+    idx++;
+  }
+  for(let i=0;i<6;i++) addLine();
+  setInterval(addLine, 2200);
+
+  const scoreEl = document.getElementById('soc-score');
+  const alertsEl = document.getElementById('soc-alerts');
+  const threatBar = document.getElementById('soc-threat-bar');
+  const geoCounts = document.querySelectorAll('.soc-geo-count');
+  const ioc = document.getElementById('soc-ioc');
+  const iocData=[
+    '192.168.1.105 <span class="crit" style="color:var(--red);">●</span> Brute-force',
+    'malware.exe <span class="warn" style="color:#ffb240;">●</span> Trojan.Generic',
+    'phish.link <span class="crit" style="color:var(--red);">●</span> Credential Harvest',
+    '10.0.0.55 <span class="warn" style="color:#ffb240;">●</span> Lateral Movement',
+    'shell.ps1 <span class="crit" style="color:var(--red);">●</span> Reverse Shell',
+    'evil.com <span class="warn" style="color:#ffb240;">●</span> C2 Beacon'
+  ];
+  setInterval(() => {
+    if(!scoreEl) return;
+    const score = 30 + Math.floor(Math.random()*35);
+    scoreEl.textContent = score;
+    threatBar.style.width = score + '%';
+    alertsEl.textContent = 8 + Math.floor(Math.random()*12);
+    geoCounts.forEach(el => {
+      const current = parseInt(el.textContent, 10);
+      el.textContent = Math.max(0, current + Math.floor(Math.random()*5) - 2);
+    });
+    const line = document.createElement('div');
+    line.innerHTML = iocData[Math.floor(Math.random()*iocData.length)];
+    ioc.insertBefore(line, ioc.firstChild);
+    if(ioc.children.length > 3) ioc.removeChild(ioc.lastChild);
+  }, 4000);
+}
+
+function initNavScrollSpy(){
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  if(!sections.length || !links.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const link = document.querySelector('.nav-links a[href="#'+id+'"]');
+      if(!link) return;
+      if(entry.isIntersecting){
+        links.forEach(l => l.classList.remove('in-view'));
+        link.classList.add('in-view');
+      }
+    });
+  }, { rootMargin:'-40% 0px -50% 0px' });
+  sections.forEach(s => io.observe(s));
+}
+</script>
+</body>
+</html>
