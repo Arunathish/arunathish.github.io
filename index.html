@@ -60,6 +60,9 @@
 
       --ease: cubic-bezier(.22,1,.36,1);
       --ease-soft: cubic-bezier(.16,.84,.44,1);
+
+        --purple: #a78bfa;
+        --purple-light: #d8b4fe;
     }
 
     * { box-sizing: border-box; }
@@ -201,6 +204,11 @@
     .rt .scan-sweep { background: linear-gradient(90deg, transparent, rgba(255, 82, 82, 0.07), transparent); }
     .glass:hover .scan-sweep { opacity: 1; animation: sweep 1.5s var(--ease) both; }
     @keyframes sweep { 0% { left: -30%; opacity: 0; } 14% { opacity: 1; } 86% { opacity: 1; } 100% { left: 112%; opacity: 0; } }
+
+    .btn.sweep-loop::before { content: ''; position: absolute; top: 0; left: -30%; width: 20%; height: 100%; background: linear-gradient(90deg, transparent, rgba(63, 146, 255, 0.07), transparent); pointer-events: none; transform: skewX(-13deg); animation: sweep 2.5s linear infinite; }
+    .btn.red.sweep-loop::before { background: linear-gradient(90deg, transparent, rgba(255, 82, 82, 0.07), transparent); }
+  .btn { position: relative; overflow: hidden; }
+
     @media (prefers-reduced-motion: reduce) { .scan-sweep { display: none; } }
 
     /* ---------- nav ---------- */
@@ -234,6 +242,8 @@
     }
     .nav-cta:hover { opacity: 0.88; }
     .nav-cta.rt { background: var(--red); }
+
+    .nav-cta.purple { background: var(--purple); }
     @media (max-width:960px) {
       .nav-links {
         position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch;
@@ -452,6 +462,8 @@
     .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
     .scroll-top:hover { color: var(--blue-light); border-color: var(--blue-line); }
     .scroll-top svg { width: 14px; height: 14px; display: block; }
+
+    
     @media (max-width:720px) { .scroll-top { bottom: 18px; right: 16px; } }
   </style>
 </head>
@@ -487,6 +499,7 @@
       <span style="display:flex; gap:8px; margin-left:auto;">
         <a class="nav-cta" href="https://github.com/Arunathish" target="_blank" rel="noopener" data-cursor="hover" data-cursor-label="VISIT" data-magnetic="0.2">GitHub ↗</a>
         <a class="nav-cta rt" href="https://linkedin.com/in/arunathish" target="_blank" rel="noopener" data-cursor="hover" data-cursor-label="VISIT" data-magnetic="0.2">LinkedIn ↗</a>
+          <a class="nav-cta purple" href="Arunathish_RV_TA_RE.pdf" download data-cursor="hover" data-cursor-label="DOWNLOAD" data-magnetic="0.2">Resume ↓</a>
       </span>
     </div>
   </nav>
@@ -505,8 +518,8 @@
           Splunk, Wazuh, ELK, and Suricata — every finding mapped back to MITRE ATT&amp;CK before it becomes a missed
           detection.</p>
         <div class="hero-cta">
-          <a href="#projects" class="btn blue" data-cursor="hover" data-cursor-label="VIEW" data-magnetic="0.15">Projects →</a>
-          <a href="https://github.com/Arunathish/Investigations/tree/main" class="btn blue" target="_blank" rel="noopener" data-cursor="hover" data-cursor-label="OPEN" data-magnetic="0.15">Investigations →</a>
+          <a href="#projects" class="btn blue sweep-loop" data-cursor="hover" data-cursor-label="VIEW" data-magnetic="0.15">Projects →</a>
+          <a href="https://github.com/Arunathish/Investigations/tree/main" class="btn blue sweep-loop" target="_blank" rel="noopener" data-cursor="hover" data-cursor-label="OPEN" data-magnetic="0.15">Investigations →</a>
         </div>
         <div class="hero-profiles">
           <a href="https://app.letsdefend.io/user/Arunathish" class="hero-profile-badge" target="_blank" rel="noopener" data-cursor="hover" data-cursor-label="VISIT"><span
@@ -525,7 +538,7 @@
           attack path built for a real responsible disclosure — used to sharpen the defense on the other side of the
           wire.</p>
         <div class="hero-cta">
-          <a href="#research" class="btn red" data-cursor="hover" data-cursor-label="VIEW" data-magnetic="0.15">Security Research →</a>
+          <a href="#research" class="btn red sweep-loop" data-cursor="hover" data-cursor-label="VIEW" data-magnetic="0.15">Security Research →</a>
         </div>
         <div class="hero-profiles">
           <a href="https://profile.hackthebox.com/profile/019c5be0-355e-7380-b03c-813eddfbfc87"
